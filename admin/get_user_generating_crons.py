@@ -12,4 +12,7 @@ with open(logfile) as f:
         result = re.search(pattern,line)
         if result is None:
             continue
-        print(result[1])
+        name = result[1]
+        usernames[name] = usernames.get(name,0) + 1
+        
+print(usernames)        
