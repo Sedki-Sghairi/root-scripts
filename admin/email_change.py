@@ -44,6 +44,9 @@ def main():
 
         f.close()  
 
-                        
+        with open(report_file,'w+') as output_file:
+            writer=csv.writer(output_file)                
+            writer.writerow(user_data_list)
+            output_file.close()
 
 main()
