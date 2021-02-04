@@ -42,6 +42,8 @@ def main():
                             user[email_index] = ' ' + new_domain
 
 
-        f.close()                  
+        f.close()  
+
+                        
 
 main()
