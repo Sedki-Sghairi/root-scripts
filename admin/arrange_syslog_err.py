@@ -28,5 +28,15 @@ with open("syslog.log") as f:
           
 a=dict(sorted(per_user_errors.items(), key=lambda item:item[0]))          
 b=dict(sorted(per_error.items(), key=lambda item:item[1], reverse=True))          
-print(a)
-print(b)
+
+with open("per_user_report.csv","w") as file:
+    please = csv.writer(file)
+    please.writerow(['Username', 'INFO', 'ERROR'])
+    for i in a:
+        please.writerow([i, a[i]["ERRORS"], a[i]["INFO"]])
+
+with open("per_error_report.csv","w") as csvf:
+    please = csv.writer(csvf)
+    please.writerow(["Error_message", "Count"])
+    for m in b:
+        please.writerow([m, b[m]])
