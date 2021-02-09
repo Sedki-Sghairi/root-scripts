@@ -4,6 +4,7 @@ import os
 import re
 import csv
 import operator
+# import subprocess
 per_user_errors = {}
 per_error = {}
 with open("syslog.log") as f:
@@ -40,3 +41,4 @@ with open("per_error_report.csv","w") as csvf:
     please.writerow(["Error_message", "Count"])
     for m in b:
         please.writerow([m, b[m]])
+
