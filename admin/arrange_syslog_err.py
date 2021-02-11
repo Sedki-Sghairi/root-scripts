@@ -4,7 +4,6 @@ import os
 import re
 import csv
 import operator
-# import subprocess
 per_user_errors = {}
 per_error = {}
 with open("syslog.log") as f:
