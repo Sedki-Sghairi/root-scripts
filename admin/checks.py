@@ -20,3 +20,10 @@ def check_disk_full(disk, min_gb, min_percent):
 def check_root_full():
     return check_disk_full(disk="/", min_gb=2, min_percent=10)
 
+def check_no_network():
+    try:
+        socket.gethostbyname("www.sedkisghairi.com")
+        return False
+    except:
+        return True
+            
