@@ -69,7 +69,22 @@ def cars_dict_to_table(car_data):
     table_data.append([item["id"], format_car(item["car"]), item["price"], item["total_sales"]])
   return table_data
 
-
+def pie_chart(car_data):
+  report_pie = Pie()
+  report_pie.width = 380
+  report_pie.height = 380
+  report_pie.x = 42
+  report_pie.y = -230
+  report_pie.data = []
+  report_pie.labels = []
+  car_make = {} 
+  for item in car_data:
+    car_info = format_car(item["car"])
+    report_pie.data.append(item["total_sales"])
+    report_pie.labels.append(car_info)
+  report_chart = Drawing()
+  report_chart.add(report_pie)
+  return(report_chart)
 
 
 def main(argv):
@@ -80,12 +95,12 @@ def main(argv):
   table_raw = table[1:]
   table_sorted = sorted(table_raw, key=lambda x:x[3], reverse=True)
   table_sorted.insert(0, ["ID", "Car", "Price", "Total Sales"])
-  # pie = pie_chart(data)
+  pie = pie_chart(data)
 
   print(summary)
   report_summary = summary[0] + "<br/>" + summary[1] + "<br/>" + summary[2] + "<br/>"
   # TODO: turn this into a PDF report
-  reports.generate("/tmp/cars.pdf", "Title", report_summary , table_sorted) #Sorting the table by Sales
+  reports.generate("/tmp/cars.pdf", "Title", report_summary , table_sorted, pie) #Sorting the table by Sales
   # TODO: send the PDF report as an email attachment
   sender = "automation@example.com"
   receiver = "{}@example.com".format(os.environ.get('USER'))
