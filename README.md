@@ -1,2 +1,2 @@
 # root-scripts
-list of my python scripts to interact with opearation systems.
+List of my python scripts to interact with opearation systems.
